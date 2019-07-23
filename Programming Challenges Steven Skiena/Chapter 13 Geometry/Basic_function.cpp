@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 # define M_PI           3.14159265358979323846
-#define eps 1e-5
+# define eps 1e-5
 using namespace std;
 
 struct point
@@ -9,10 +9,38 @@ struct point
     float x, y;
 };
 
-struct line
+class line
 {
-    float a, b, c;
+public:
+	float a, b, c;
+
+public:
+	line(float m_a, float m_b, float m_c);
+	line(point p1, point p2);
+	~line();
+
+private:
+
 };
+
+line::line(float m_a, float m_b, float m_c)
+{
+	a = m_a;
+	b = m_b;
+	c = m_c;
+}
+
+line::~line()
+{
+}
+
+line::line(point p1, point p2)
+{
+	a = p2.y - p1.y;
+	b = p1.x - p2.x;
+	c = (p2.x*p1.y - p1.x*p2.y);
+}
+
 
 struct circle
 {
