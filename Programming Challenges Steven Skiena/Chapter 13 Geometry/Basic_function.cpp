@@ -1,13 +1,40 @@
 #include <iostream>
 #include <cmath>
+#include <stdio.h>
+#include <math.h>
+
 # define M_PI           3.14159265358979323846
 # define eps 1e-5
 using namespace std;
 
-struct point
+class point
 {
-    float x, y;
+public:
+	float x, y;
+public:
+	point();
+	point(float m_x, float m_y);
+	~point();
+
+private:
+	
 };
+
+point::point()
+{
+	x = 0;
+	y = 0;
+}
+
+point::point(float m_x, float m_y)
+{
+	x = m_x;
+	y = m_y;
+}
+
+point::~point()
+{
+}
 
 class line
 {
@@ -42,11 +69,39 @@ line::line(point p1, point p2)
 }
 
 
-struct circle
+class circle
 {
-    point center;
-    float radius;
+public:
+	circle();
+	void get_point(point m_center);
+	void get_radius(float m_radius);
+	~circle();
+
+public:
+	point center;
+	float radius;
+
 };
+
+circle::circle()
+{
+	center = point(0, 0);
+	radius = 1;
+};
+
+void circle::get_point(point m_center)
+{
+	center = m_center;
+};
+
+void circle::get_radius(float m_radius)
+{
+	radius = m_radius;
+}
+circle::~circle()
+{
+};
+
 
 float distance_point_to_point(point &p1, point &p2);
 float distance_point_to_line(point &p, line &l);
@@ -55,7 +110,15 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
+	int number_test_case;
+	cin >> number_test_case;
+	circle c;
+	c.get_point(point(0, 0));
+	while (number_test_case)
+	{
+		
+		number_test_case--;
+	}
     return 0;
 }
 
