@@ -28,44 +28,28 @@ int main()
                 d[j] += a[i][j];
             }
         }
-        int wrong_col_1 = -1, wrong_col_2 = -1, wrong_row_1 = -1, wrong_row_2 = -1;
-
+        int wrong_col = -1, wrong_row = -1 ;
+        int n_wrong_col = 0, n_wrong_row = 0;
         for (int i = 0; i < k; i++)
         {
             if (c[i] % 2 != 0)
             {
-                if (wrong_row_1 == -1)
-                {
-                    wrong_row_1 = i + 1;
-                }
-                else
-                {
-                    wrong_row_2 = i + 1;
-                }
+                n_wrong_row++;
+                wrong_row = i + 1;
             }
             if (d[i] % 2 != 0)
             {
-                if (wrong_col_1 == -1)
-                {
-                    wrong_col_1 = i + 1;
-                }
-                else
-                {
-                    wrong_col_2 = i + 1;
-                }
+                n_wrong_col++;
+                wrong_col = i + 1;
             }
         }
-        if (wrong_col_1 < 0 && wrong_row_1 < 0)
+        if (n_wrong_row == 0 && n_wrong_col == 0)
         {
             cout << "Ok" << endl;
         }
-        else if (cond(wrong_col_1, wrong_row_1, wrong_col_2, wrong_col_2))
+        else if (n_wrong_row == 1 && n_wrong_col == 1)
         {
-            cout << "Change bit (" << wrong_row_1 << "," << wrong_col_1 << ")" << endl;
-        }
-        else if (cond(wrong_col_2, wrong_row_2, wrong_col_1, wrong_col_1))
-        {
-            cout << "Change bit (" << wrong_row_2 << "," << wrong_col_2 << ")" << endl;
+            cout << "Change bit (" << wrong_row << "," << wrong_col << ")" << endl;
         }
         else
         {
